@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucesso!</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #10B981;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 4em;
+            color: #10B981;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            background-color: #5B21B6;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4F46E5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon">✅</div>
+        <h1>Formulário Concluído!</h1>
+        <p>Agradecemos por suas respostas. Elas foram salvas com sucesso no banco de dados.</p>
+        <a href="{{ url_for('main.index') }}">
+            <button>Voltar à Tela Inicial</button>
+        </a>
+    </div>
+</body>
+
+</html>

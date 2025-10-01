@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário sobre Gordofobia</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #5B21B6;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            margin-bottom: 30px;
+        }
+        
+        button {
+            background-color: #7C3AED;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #6D28D9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Pesquisa sobre Gordofobia</h1>
+        <p>Este formulário contém 10 perguntas para coleta de dados sobre a percepção e experiência com o preconceito
+            contra pessoas gordas na sociedade.</p>
+        <a href="{{ url_for('main.pergunta', num_pergunta=1) }}">
+            <button>Começar a Responder</button>
+        </a>
+    </div>
+</body>
+
+</html>

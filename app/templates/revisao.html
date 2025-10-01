@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão e Envio Final</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #5B21B6;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #EEE;
+            padding-bottom: 10px;
+        }
+        
+        .flash-message {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+        }
+        
+        .flash-message.error {
+            background-color: #FEE2E2;
+            color: #DC2626;
+            border: 1px solid #DC2626;
+        }
+        
+        .flash-message.success {
+            background-color: #D1FAE5;
+            color: #059669;
+            border: 1px solid #059669;
+        }
+        
+        .question-block {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #fafafa;
+        }
+        
+        h3 {
+            color: #4F46E5;
+            margin-top: 0;
+            font-size: 1.1em;
+        }
+        
+        p strong {
+            font-weight: bold;
+            color: #1F2937;
+        }
+        
+        .button-group {
+            margin-top: 30px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        
+        button,
+        .back-button {
+            background-color: #7C3AED;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        button:hover {
+            background-color: #6D28D9;
+        }
+        
+        .back-button {
+            background-color: #6B7280;
+        }
+        
+        .back-button:hover {
+            background-color: #4B5563;
+        }
+        
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Revisão das Suas Respostas</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% for item in respostas %}
+        <div class="question-block">
+            <h3>Q{{ item.num }}: {{ item.pergunta }}</h3>
+            <p><strong>Resposta Selecionada:</strong></p>
+            <div class="answer-content">{{ item.resposta|safe }}</div>
+        </div>
+        {% endfor %}
+
+        <div class="button-group">
+            <a href="{{ url_for('main.pergunta', num_pergunta=10) }}" class="back-button">Voltar à Última Pergunta</a>
+
+            <form method="POST" style="display: inline;">
+                {{ form.hidden_tag() }}
+                {{ form.submit() }} <
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
