@@ -20,3 +20,4 @@ class RespostaFormulario(db.Model):
 
     def __repr__(self):
         return f'<RespostaFormulario {self.id}>'
+    
