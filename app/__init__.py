@@ -16,9 +16,19 @@ def create_app():
     
     # Configurações da Aplicação
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+    
+    # ------------------------------------------------------------------
+    # CORREÇÃO CRÍTICA PARA RENDER/POSTGRESQL
+    # ------------------------------------------------------------------
+    db_uri = os.getenv('DATABASE_URI')
+    # O Render frequentemente usa 'postgres://', que deve ser corrigido para 'postgresql://'
+    if db_uri and db_uri.startswith("postgres://"):
+        db_uri = db_uri.replace("postgres://", "postgresql://", 1)
+        
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
+    # ------------------------------------------------------------------
+    
     db.init_app(app)
     migrate.init_app(app, db) 
     
